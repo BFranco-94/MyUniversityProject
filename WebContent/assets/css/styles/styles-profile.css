@@ -1,0 +1,62 @@
+*{ padding: 0; margin: 0; }
+
+
+
+.w-padding{ padding: 0; }
+.box-grid-options {	 padding: 0; background-color: transparent;}
+.box-grid-options div{ box-shadow: 0px 0px 0px 0px ;  }
+
+/* section para opciones de perfil */
+#options-profile-box{  height: 750px; background-color: #273746; padding: 0;}
+	/* opcion #1, #2, #3, #4 */
+	.box-to-select-option{
+		background-color:  #273746;
+		text-align: left;
+		font-size: 20px;
+		color: #fff;
+	}.box-to-select-option:hover{ cursor: pointer; background-color:  #607d8b;} 
+
+
+/* estilos para las cajas donde se mostrar los detalles*/
+.box-info-options:hover{
+}
+#box-Contact, #box-TMates,#box-SMedia,#box-Projects,#btnUpdateImageToSend,
+#box-with-codes-generated, #tableLinks,#textMessageProject{ display: none; }
+.inputsToProfileAcces:hover{ cursor: hand; }
+
+
+/*image user profile to load */
+#uploadPic{ margin: auto; width: 200px; height: 180px; }
+
+/* for image profile */
+#imageProfile{ 
+	border: 2px solid #000; 
+	transition: 1.3s all ease;
+	}#imageProfile:hover{ 
+		border: 2px solid #000; transition: .8s all ease;
+		opacity: 0.6; 
+		cursor: pointer;
+	}#imageProfile:focus{ 
+		border: 2px solid #000; transition: 1s all ease; 
+	}
+
+#box-SMedia{
+	 /*background-image: url("../../image/vct-nodes.png");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+.editProject:hover{ cursor: pointer; }
+.title-name-project{ color: #fff; }
+@media (max-width: 960px) {
+	#options-profile-box{ display: none; }
+}
+
+@media (max-width: 696px) {
+	#options-profile-box{ display: none; }
+}
+@media (max-width: 576px) {
+	#options-profile-box{ display: none; }
+	#imageForProfile{ display: none; }
+	/*.boxUsrName{ width: 100%; margin: 0; }*/
+}
