@@ -1,0 +1,192 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.output {
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+  color: white;
+}
+.output h1 {
+  color: #fff;
+    font-size: 19px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* Cursor Styling */
+.cursor::after {
+  content: '';
+  display: inline-block;
+  margin-left: 3px;
+  background-color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+h1.cursor::after {
+  height: 24px;
+  width: 13px;
+}
+
+p.cursor::after {
+  height: 13px;
+  width: 6px;
+
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box-content-init {
+    background-image: url("../../image/Anime_Classroom.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.imgInput{
+    background-image: url("../../image/brain-nodes.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #000;
+    font-size: 22px;
+    text-align: center;
+}
+
+.area-shadow{ 
+    transition: 1s all ease;
+    border-radius: 0px 0px 0px 0px;
+    }.area-shadow:hover{
+        -webkit-box-shadow: 0 0 40px 5px #000000;
+        box-shadow: 0 0 40px 5px #000000;
+        transition: 1s all ease;
+        border-radius: 100px 0px 0px 40px;
+    }
+
+.area-shadow-description{ 
+    transition: 1s all ease;
+    border-radius: 0px 0px 0px 0px; 
+    }.area-shadow-description:hover{
+        border-radius: 0px 100px 100px 0px;
+}
+
+
+/*  ====== styles for the textarea description ======  */
+    .area-shadow-description textarea{
+        resize: none;
+        padding: 20px;
+        color: #000;
+        width: 700px;
+        font-family: 'Source Code Pro', monospace;  
+        font-size: 18px;
+       /*color: rgba(255,255,255,.70);*/
+
+        }.area-shadow-description textarea:focus{
+            transition: 1s all ease;
+              border-right: solid 6px #53E0C7;
+            /*white-space: nowrap;*/
+            overflow: hidden;    
+            font-family: 'Source Code Pro', monospace;  
+            font-size: 18px;
+            text-align: justify;
+            margin: 0 auto;
+            animation: animated-text 2s steps(29,end) 1s 1 normal both,
+                 animated-cursor 600ms steps(29,end) infinite;
+        }
+
+
+.box-content-init h2 {
+    color: #fff;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.iconClose{
+    color: #fff;
+   background-color: red;
+   border-radius: 100px;
+    }.iconClose:hover{
+        -webkit-box-shadow: 0 0 10px 5px #000000;
+        box-shadow: 0 0 10px 5px #000000;
+        cursor: pointer;
+    }
+
+
+#saveMembers{ display: none; }
+footer div{ background-color: transparent; }
+.item-content-box-footer{ padding: 10px; }
+
+.item-content-box-footer div ul {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    color: orange;
+}
+
+/*
+
+    que aprendiste sobre el trabajo con otras persona
+
+*/
+
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+
+/* cursor animations for the textare */
+@keyframes animated-text{
+  from{width: 700px;}
+  to{width: 700px;}
+}
+@keyframes animated-cursor{
+  from{border-right-color: #2085F3;}
+  to{border-right-color: transparent; }
+}
+
+
+/* styles for device max 576 px or less */
+
+@media (max-width: 576px) {
+    .area-shadow-description textarea:focus{
+        box-shadow: 0px 0px 0px 0px;
+    }
+
+}

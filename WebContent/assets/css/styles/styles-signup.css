@@ -1,0 +1,209 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	/* The new syntax needed by standard-compliant browsers (IE 10 and Firefox 10 onwards), without prefix */
+	background: linear-gradient(to right, rgba(28, 40, 51, 0),
+		rgba(28, 40, 51, 1)), url("../../image/Anime_Classroom.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#section-sigup {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 680px;
+}
+
+#formBox {
+	background-color: rgb(234, 237, 237);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.9;
+}
+
+/*#formBox {}*/
+#section-sig-in, #toSignup {
+	display: none;
+}
+
+.content-formulary {
+	opacity: .95;
+	margin-top: 120px;
+}
+
+.content-card-boy-form {
+	padding: 0;
+}
+
+.form-body {
+	width: 300px;
+}
+
+#imageSign {
+	display: none;
+}
+
+#messageTerms, #messageEmail {
+	display: none;
+}
+
+#img-to-complete {
+	background-image: url("../../image/Anime_Classroom.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	width: 650px;
+	height: 1000px;
+}
+
+#form {
+	background-color: #fff;
+	height: 1000px;
+	color: #000;
+}
+
+#formulary h1 {
+	color: #000;
+}
+
+#formStudent, #formCompany, #selectTypeForm, .messageSignupSuccess {
+	display: none;
+}
+
+#formDataStudent label, #formCompany label, #selectTypeForm label {
+	color: #000;
+	font-size: 18px;
+}
+
+#formDataStudent a, #selectTypeForm a {
+	color: #ec7063;
+	font-size: 14px;
+}
+
+#btnSendDtaStudent {
+	background-color: #ec7063;
+	color: #fff;
+	font-size: 18px;
+}
+/*#titleSecondPartForm{ color: #fff; }*/
+#divTmp {
+	margin: 0px 0px 400px 0px;
+}
+
+.card-target-for-select:hover, .card-target-for-select:focus {
+	cursor: pointer;
+}
+
+.card-target {
+	background-image: url("../../image/brain-nodes.png");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.9;
+	box-shadow: 0px 0px 20px 3px gray;
+}
+
+.card-target:hover {
+	box-shadow: 0px 0px 60px 3px gray;
+}
+.main-card-choose-user{
+	background-color: transparent;
+}
+.btnCloseToChoose{
+	color: #fff;font-size: 43px; border: 3px dashed #fff; margin: -20px;
+}
+.main-card-choose-user h2{ font-size: 44px; color: #fff; }
+.card-select-user{
+	background-color: #fff;
+	background-image:  url("../../image/vct-nodes.png");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 100%;
+	transition: 1.5s all ease;
+}
+.card-select-user:hover{
+	box-shadow: 0px 0px 10px 4px #000;
+	border-radius: 50px 20px 50px 20px;
+	transition: 1s all ease;
+	cursor: pointer;
+}
+
+figure figcaption {
+	color: #000;
+	font-size: 30px;
+}
+
+@media ( max-width : 996px) {
+	.content-formulary {
+		margin-top: 10px;
+	}
+	#img-to-complete {
+		display: none;
+	}
+	#formulary {
+		height: 900px;
+	}
+}
+
+@media ( max-width : 800px) {
+	.content-formulary {
+		margin-top: 80px;
+	}
+}
+
+@media ( max-width : 768px) {
+	.content-formulary {
+		margin-top: -220px;
+	}
+	#img-to-complete {
+		display: none;
+	}
+	#formulary {
+		height: 900px;
+	}
+}
+
+@media ( max-width : 696px) {
+	#cont-image-left {
+		display: none;
+	}
+	.form-body {
+		width: 500px;
+	}
+}
+
+@media ( min-width : 578px) {
+	.content-formulary {
+		margin-top: 80px;
+	}
+}
+
+@media ( max-width : 567px) {
+	#cont-image-left {
+		display: none;
+	}
+	.form-body {
+		width: 250px;
+	}
+	.content-formulary {
+		margin-top: 180px;
+	}
+	#img-to-complete {
+		display: none;
+	}
+	#formulary {
+		height: 900px;
+	}
+	.card-select-user{
+		box-shadow: 0px 0px 10px 4px #000;
+		border-radius: 50px 20px 50px 20px;
+		transition: 1s all ease;
+		cursor: pointer;
+	}
+}
