@@ -72,7 +72,7 @@ public class StudentData implements Querys{
 		//Iniciando Transaction
 		Transaction t = session.beginTransaction();
 		
-		String query="UPDATE StudentData SET  "
+		String query="UPDATE studentdata SET  "
 				+ "Names=: names , "
 				+ "LastName=: lastName ,"
 				+ "UniversityName=: university ,"
@@ -80,7 +80,7 @@ public class StudentData implements Querys{
 				+ "Country=: country ,"
 				+ "StatusOfStudent=: status ,"
 				+ "AcademyArea=: academicArea "
-			+ "WHERE  id_idx_user=: fKey ";
+			+ "WHERE  id_idxUser=: fKey ";
 		//Proceso leer todo
 		Query queryHibernate = session.createQuery(query);
 		queryHibernate.setParameter("names", names);
@@ -92,8 +92,10 @@ public class StudentData implements Querys{
 		queryHibernate.setParameter("academicArea", academicArea);
 		queryHibernate.setParameter("fKey", idx_user);
 		int resultQuery = queryHibernate.executeUpdate();
+		System.out.println("Resultado de la modificacion: "+resultQuery);
 		if(resultQuery==0) { 
 			t.rollback();
+			System.out.println("Rollback executed on student data, try again");
 			return false; 
 		}else{ return  true; }
 	}

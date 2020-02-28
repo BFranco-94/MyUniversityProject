@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="studentdata")
+@PrimaryKeyJoinColumn(name = "user")
 public class EntityStudentData implements Serializable{
 
 	private static final long serialVersionUID = 59862378599889582L;
@@ -22,8 +24,8 @@ public class EntityStudentData implements Serializable{
 	 * */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_studentData" , unique = true, nullable = false)
-		private int id_studentData;
+	@Column(name="id_dateUser" , unique = true, nullable = false)
+		private int id_dateUser;
 	/**@see  "
 	 *  idx_user: This variable is for ...
 	 * 	------ Save or Select the idx_user on the Data Base.
@@ -82,7 +84,7 @@ public class EntityStudentData implements Serializable{
 	 *  ------ JPA entity -> academyArea " 
 	 * 
 	 * */
-	@Column(name="AcademyArea")
+	@Column(name="AcademicArea")
 		private String academyArea;
 	
 	/**@see  "
@@ -96,7 +98,7 @@ public class EntityStudentData implements Serializable{
 		
 	//SETTERS
 		/** @param id_studentData the id_studentData to set */
-		public void setId_studentData(int id_studentData){ this.id_studentData = id_studentData; }
+		public void setId_dateUser(int id_dateUser){ this.id_dateUser = id_dateUser; }
 		
 		/** @param idx_user the idx_user to set */
 		public void setIdx_user(int idx_user){ this.idx_user = idx_user; }
@@ -125,7 +127,7 @@ public class EntityStudentData implements Serializable{
 		
 	//GETTERS
 		/** @return the id_studentData */
-		public long getId_studentData(){ return id_studentData; }
+		public long getId_dateUser(){ return id_dateUser; }
 		
 		/** @return the idx_user */
 		public long getIdx_user(){ return idx_user; }
@@ -151,5 +153,14 @@ public class EntityStudentData implements Serializable{
 		/** @return the status_Student */
 		public String getStatus_Student(){ return status_Student; }
 	
-
 }
+
+
+/*
+ * Determinante de una matriz, rotacion de matriz, palindromo, balance de parentesis
+ * Baeldung, baeldung java 8
+ * method references
+ * class references
+ * 
+ * 
+ * */

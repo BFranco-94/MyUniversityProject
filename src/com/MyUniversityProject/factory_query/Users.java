@@ -34,10 +34,9 @@ public class Users implements Querys{
 		Transaction t = session.beginTransaction();
 		StudentData sData = new StudentData();
 		
-		boolean flagRes=false;
-		KeyPassword kp = new KeyPassword();
-		kp.setValNameToEncrypt((String) data[2]);
-		String passwordEncrypted= kp.EncryptPasswordSHA256(kp.getValNameToEncrypt());
+		boolean flagRes=false; //response im will send to my controller as answer 
+		KeyPassword kp = new KeyPassword(); //Object for enscrypt the password and send it to the data base
+		String passwordEncrypted= kp.EncryptPasswordSHA256((String) data[2]);
 		Calendar calendar = Calendar.getInstance();
 		Date dateToRegister = new Date(calendar.getTime().getTime());
 		User objectUser = new User();
@@ -63,10 +62,12 @@ public class Users implements Querys{
 		System.out.println(objectUser.getId_user());
 		//close the session
 		session.close();
-		if(!flagRes && !respStudent) {
+		if(!respStudent && !flagRes ) {
 			t.rollback();
+			System.out.println("Rollback executed, try again");
 			return false;
 		}else {
+			System.out.println("Registro hecho satisfactoriamente");
 			return true;
 		}
 		//return ((!flagRes && !respStudent)? false : true);
@@ -80,7 +81,7 @@ public class Users implements Querys{
 	
 	@Override
 	/**@param Object data[]: get values from the formulary -> Object[UserName, Emai, Password, termsAccepted, typeUser] */
-	public boolean InsertQueryPrepare(Object data[])throws SQLException {
+	public boolean InsertQueryPrepare(Object data[]) throws SQLException{
 		PreparedStatement ps; //CREATE MY  OBJECT FOR PREPARE MY QUERY
 		DataBaseConnection.getInstance().Conexion();
 		Calendar calendar = Calendar.getInstance();

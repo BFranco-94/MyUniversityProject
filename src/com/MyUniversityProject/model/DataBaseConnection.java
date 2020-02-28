@@ -15,7 +15,7 @@ import com.mysql.jdbc.Statement;
  * */
 
 public class DataBaseConnection implements ConnectionInterface {
-	private static DataBaseConnection INSTANCE;
+	private static  DataBaseConnection INSTANCE;
 	public static PreparedStatement prest=null;
     public static CallableStatement cllst=null;
     private Connection conec=null;
@@ -35,7 +35,7 @@ public class DataBaseConnection implements ConnectionInterface {
 	}
 
 	@Override
-	public void Conexion() {
+	public void Conexion(){
 		try {
 			Class.forName(DRIVER).newInstance();
 			setConec((Connection) DriverManager.getConnection(URL,USER,PASSWORD));
