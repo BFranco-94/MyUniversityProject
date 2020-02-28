@@ -372,7 +372,7 @@
                                     <option value="Doctor">Doctor</option>
                                     <option value="Lawyer">Lawyer</option>
                                 </select>
-                        </div>
+                        </div> 
                         <div class="uk-width-1-2@s">
                             <label class="uk-form-label uk-text-left uk-margin" 
                                    for="status_student">Status of the student</label>
