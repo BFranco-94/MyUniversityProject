@@ -48,8 +48,9 @@ public class StudentData implements Querys{
 	 * @param String academicArea: receive the academicArea of student's as an argument
 	 * @throws SQLException 
 	 * */
-	public boolean UpdateQuery(String names, String lastName, String university,
-			String federalEntity, String country, String status, String academicArea, String userName, int idx_user) throws SQLException {
+	public boolean UpdateQuery(
+			String names, String lastName, String university,String federalEntity,
+		    String country, String status, String academicArea, String userName, int idx_user) throws SQLException {
 		DataBaseConnection.getInstance().Conexion();
 		boolean flagRes=false;
 		try {
@@ -111,9 +112,9 @@ public class StudentData implements Querys{
 	}
 
 	@Override
-	public void ReadQuery(int idKey) {
+	public boolean ReadQuery(int idKey, String keyName) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

@@ -73,12 +73,6 @@ public class InsertQuery extends QueryManagment{
 	}
 
 	@Override
-	public void ReadQuery(int idKey) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public boolean InsertQueryHibernate(Object[] data) {
 		// TODO Auto-generated method stub
 		return false;
@@ -98,6 +92,12 @@ public class InsertQuery extends QueryManagment{
 
 	@Override
 	public boolean UpdateQuery(int idx) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean ReadQuery(int idKey, String keyName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
