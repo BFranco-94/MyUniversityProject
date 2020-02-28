@@ -29,8 +29,7 @@ public class DataBaseConnection implements ConnectionInterface {
 	public synchronized static DataBaseConnection getInstance() {
 		if(INSTANCE==null){ // if not exist object created, so ... create an object kind of Connection
 			INSTANCE=new DataBaseConnection(); //create Object
-			System.out.println("Object created");
-		}else{ System.out.println("the object was created" ); }
+		}
 		return INSTANCE; //else return the object created
 	}
 

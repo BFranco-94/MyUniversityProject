@@ -3,18 +3,9 @@ package com.MyUniversityProject.factory_query;
  * @author bryan franco velez
  * */
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-
-import com.MyUniversityProject.entities.EntityStudentData;
-import com.MyUniversityProject.entities.User;
 import com.MyUniversityProject.interfaces.Querys;
+import com.MyUniversityProject.model.DataBaseConnection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class StudentData implements Querys{
 
@@ -37,16 +28,15 @@ public class StudentData implements Querys{
 	}
 
 	@Override
-	public boolean UpdateQuery() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean UpdateQueryHibernate() {
+	/**
+	 * @param idx_user 
+	 * @throws SQLException 
+	 * */
+	public boolean UpdateQuery(int idx) throws SQLException {
 		
 		return false;
 	}
+	
 	/**
 	 * @param idx_user 
 	 * @param String name: receive the student's name as an argument
@@ -56,49 +46,51 @@ public class StudentData implements Querys{
 	 * @param String country: receive the country name as an argument
 	 * @param String status: receive the status student's as an argument
 	 * @param String academicArea: receive the academicArea of student's as an argument
+	 * @throws SQLException 
 	 * */
-	public boolean UpdateQueryHibernate(String names, String lastName, String university,
-			String federalEntity, String country, String status, String academicArea, String userName, int idx_user) {
+	public boolean UpdateQuery(String names, String lastName, String university,
+			String federalEntity, String country, String status, String academicArea, String userName, int idx_user) throws SQLException {
+		DataBaseConnection.getInstance().Conexion();
+		boolean flagRes=false;
+		try {
+
+		   String query="UPDATE studentdata SET  "
+				+ "Names= ? , "
+				+ "LastName= ? ,"
+				+ "NameUniversity= ? ,"
+				+ "FederalEntity= ? ,"
+				+ "Country= ? ,"
+				+ "StatusOfStudent= ?,"
+				+ "AcademicArea= ? "
+			+ "WHERE  id_idxUser= ? ";
+			PreparedStatement ps = (PreparedStatement) DataBaseConnection.getInstance().getConec().prepareStatement(query);
+				ps.setString(1, names);
+				ps.setString(2, lastName);
+				ps.setString(3, university);
+				ps.setString(4, federalEntity);
+				ps.setString(5, country);
+				ps.setString(6, status);
+				ps.setString(7, academicArea);
+				ps.setInt(8, idx_user);
+			int rowsAffected = ps.executeUpdate();
+			System.out.println(" rows affected => "+rowsAffected);
+			flagRes= (rowsAffected>0)?true: false;
+		} catch (SQLException e) {
+			 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}finally {
+			if(DataBaseConnection.getInstance().getConec() != null) {
+			   DataBaseConnection.getInstance().getConec().close();
+			}
+		}
+		return flagRes;
 		
-		Configuration cfg = new Configuration();
-		cfg.addAnnotatedClass(com.MyUniversityProject.entities.EntityStudentData.class);//Para que se traiga el esquema
-		cfg.configure("HibernateProperties/hibernate.cfg.xml");
-		//Creamos sesion Factory
-		SessionFactory factory = cfg.buildSessionFactory();
-		
-		//Crear Objeto Session
-		Session session = factory.openSession();
-		
-		//Iniciando Transaction
-		Transaction t = session.beginTransaction();
-		
-		String query="UPDATE studentdata SET  "
-				+ "Names=: names , "
-				+ "LastName=: lastName ,"
-				+ "UniversityName=: university ,"
-				+ "FederalEntity=: federalEntity ,"
-				+ "Country=: country ,"
-				+ "StatusOfStudent=: status ,"
-				+ "AcademyArea=: academicArea "
-			+ "WHERE  id_idxUser=: fKey ";
-		//Proceso leer todo
-		Query queryHibernate = session.createQuery(query);
-		queryHibernate.setParameter("names", names);
-		queryHibernate.setParameter("lastName", lastName);
-		queryHibernate.setParameter("university", university);
-		queryHibernate.setParameter("federalEntity", federalEntity);
-		queryHibernate.setParameter("country", country);
-		queryHibernate.setParameter("status", status);
-		queryHibernate.setParameter("academicArea", academicArea);
-		queryHibernate.setParameter("fKey", idx_user);
-		int resultQuery = queryHibernate.executeUpdate();
-		System.out.println("Resultado de la modificacion: "+resultQuery);
-		if(resultQuery==0) { 
-			t.rollback();
-			System.out.println("Rollback executed on student data, try again");
-			return false; 
-		}else{ return  true; }
 	}
+
+	@Override
+	public boolean UpdateQueryHibernate() {
+		return false;
+	}
+	
 	
 	@Override
 	public boolean DeleteQuery(int key) {

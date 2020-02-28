@@ -25,7 +25,7 @@
 		<property name="hibernate.connection.password">
 
 		</property>
-
+		
 		<!-- List of XML mapping files <mapping resource = "maping.hbm.xml"/> -->
 
 	</session-factory>

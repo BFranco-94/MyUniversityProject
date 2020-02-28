@@ -7,14 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable{
 	/**
 	 * 
@@ -30,7 +26,6 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_user", unique = true, nullable = false)
-	//@SequenceGenerator(name = "id_user", sequenceName = "id_user")
 	private int id_user;
 	
 	/**@see  "

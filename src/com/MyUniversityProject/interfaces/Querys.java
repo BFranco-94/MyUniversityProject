@@ -3,11 +3,11 @@ import java.sql.SQLException;
 
 public interface Querys {
 	
-	public boolean InsertQueryHibernate(Object data[]);
+	public boolean InsertQueryHibernate(Object data[]) throws SQLException;
 	public boolean InsertQueryPrepare(String query);
 	boolean InsertQueryPrepare(Object[] data) throws SQLException;
 	
-	public boolean UpdateQuery();
+	public boolean UpdateQuery(int idx) throws SQLException;
 	public boolean UpdateQueryHibernate();
 	
 	public boolean DeleteQuery(int key);	

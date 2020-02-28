@@ -3,12 +3,6 @@ package com.MyUniversityProject.model;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import com.mysql.jdbc.PreparedStatement;
 
 public class InsertQuery extends QueryManagment{
@@ -53,12 +47,7 @@ public class InsertQuery extends QueryManagment{
 		return null;
 	}
 
-	@Override
-	public boolean UpdateQuery() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	@Override
 	public boolean UpdateQueryHibernate() {
 		// TODO Auto-generated method stub
@@ -103,6 +92,12 @@ public class InsertQuery extends QueryManagment{
 
 	@Override
 	public boolean InsertQueryPrepare(Object[] data) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean UpdateQuery(int idx) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}

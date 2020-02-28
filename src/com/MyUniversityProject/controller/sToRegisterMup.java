@@ -48,8 +48,6 @@ public class sToRegisterMup extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter pw = response.getWriter();
 		//SessionUsers su = new SessionUsers();
 		
 		//INDIVIDUAL DATA
@@ -77,16 +75,22 @@ public class sToRegisterMup extends HttpServlet {
 						country, status, academicArea
 				};
 				Querys queryEntity = QuerysEntityFactory.buildEntityQuery(TypeEntity.USER);
-				flagResponse = queryEntity.InsertQueryHibernate(dataStudent);
-				String message=(flagResponse)? "Success on register": "Error";
-				String jSonMessage=
-				"{ "
-					+"\"dataRegister\":{"
-						+ "\"Message\":\""+message+"\","
-						+ "\"NameUser\":\""+userName+"\""
-					+ "}"
-				+ "}";
-				response.getWriter().append(jSonMessage);
+				try {
+					flagResponse = queryEntity.InsertQueryHibernate(dataStudent);
+					String message=(flagResponse)? "Success on register": "Error";
+					String jSonMessage=
+					"{ "
+						+"\"dataRegister\":{"
+							+ "\"Message\":\""+message+"\","
+							+ "\"NameUser\":\""+userName+"\","
+							+ "\"status\":"+flagResponse
+						+ "}"
+					+ "}";
+					response.getWriter().append(jSonMessage);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			break;
 			case "Company":
 				

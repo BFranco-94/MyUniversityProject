@@ -1,7 +1,6 @@
 package com.MyUniversityProject.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="studentdata")
-@PrimaryKeyJoinColumn(name = "user")
+@PrimaryKeyJoinColumn(name = "id_user")
 public class EntityStudentData implements Serializable{
 
 	private static final long serialVersionUID = 59862378599889582L;
@@ -33,8 +32,9 @@ public class EntityStudentData implements Serializable{
 	 * 
 	 * */
 	@Id
-	@Column(name="id_idxUser")
-		private long idx_user;
+	private int id_user;
+	
+	
 	/**@see  "
 	 *  userName: This variable is for ...
 	 * 	------ Save, Delete, update or Select the userName on the Data Base.
@@ -101,7 +101,7 @@ public class EntityStudentData implements Serializable{
 		public void setId_dateUser(int id_dateUser){ this.id_dateUser = id_dateUser; }
 		
 		/** @param idx_user the idx_user to set */
-		public void setIdx_user(int idx_user){ this.idx_user = idx_user; }
+		public void setId_user(int id_user){ this.id_user = id_user; }
 		
 		/** @param userName the userName to set */
 		public void setName(String name){ this.name = name; }
@@ -130,7 +130,7 @@ public class EntityStudentData implements Serializable{
 		public long getId_dateUser(){ return id_dateUser; }
 		
 		/** @return the idx_user */
-		public long getIdx_user(){ return idx_user; }
+		public int getId_user(){ return id_user; }
 		
 		/** @return the userName */ 
 		public String getName(){ return name; }

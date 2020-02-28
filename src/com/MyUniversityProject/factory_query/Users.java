@@ -3,13 +3,10 @@ package com.MyUniversityProject.factory_query;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-
 import com.MyUniversityProject.entities.User;
 import com.MyUniversityProject.interfaces.Querys;
 import com.MyUniversityProject.model.DataBaseConnection;
@@ -21,7 +18,7 @@ public class Users implements Querys{
 	@Override
 	/**@param Object data[]: get values from the formulary -> 
 	 * Object[UserName, Email , Password, typeUser, DateRegister, TermsAcepted ] */
-	public boolean InsertQueryHibernate(Object data[]) {
+	public boolean InsertQueryHibernate(Object data[]) throws SQLException {
 		//configuration for hibernate
 		Configuration cfg = new Configuration();
 		cfg.addAnnotatedClass(com.MyUniversityProject.entities.User.class);
@@ -47,14 +44,13 @@ public class Users implements Querys{
 			objectUser.setTermsAccepted((String)data[4]); //[4] termsAccepted
 			objectUser.setDateRegister((Date)dateToRegister); // I get my object to insert on data base => Date format
 		Integer resInsert = (Integer) session.save(objectUser);
-		//run transaction
-		//User datos = session.createQuery("from users where UserName=: username").getResultList();
 		int id = objectUser.getId_user();
 		System.out.println("Id del usuario: "+id+" , resInsert => "+resInsert);
+		//run transaction
 		session.getTransaction().commit();
 		flagRes=true;
 		
-		boolean respStudent=sData.UpdateQueryHibernate(
+		boolean respStudent=sData.UpdateQuery(
 				(String)data[5], (String)data[6], (String)data[7], (String)data[8], 
 				(String)data[9], (String)data[10], (String)data[11], (String)data[0],
 				id
@@ -62,6 +58,7 @@ public class Users implements Querys{
 		System.out.println(objectUser.getId_user());
 		//close the session
 		session.close();
+		//if(!respStudent && !flagRes ) {
 		if(!respStudent && !flagRes ) {
 			t.rollback();
 			System.out.println("Rollback executed, try again");
@@ -70,7 +67,6 @@ public class Users implements Querys{
 			System.out.println("Registro hecho satisfactoriamente");
 			return true;
 		}
-		//return ((!flagRes && !respStudent)? false : true);
 	}
 	
 	@Override
@@ -150,23 +146,6 @@ public class Users implements Querys{
 		return resp;
 	}
 
-	@Override
-	public boolean UpdateQuery() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean UpdateQueryHibernate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean DeleteQuery(int key) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean DeleteQueryHibernate(int idKey) {
@@ -184,6 +163,24 @@ public class Users implements Querys{
 	public void ReadQuery(int idKey) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean UpdateQuery(int idx) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean UpdateQueryHibernate() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean DeleteQuery(int key) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

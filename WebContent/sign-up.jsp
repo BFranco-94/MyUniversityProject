@@ -363,14 +363,14 @@
                                 <select class="uk-select" id="academicArea" name="academicArea"
                                         required="">
                                     <option value="" selected="" disabled="">Select Academic Area</option>
-                                    <option value="Ingenieria en computacion">
-                                        Ingenieria en computacion
+                                    <option value="Computer Engineering">
+                                        Computer Engineering
                                     </option>
-                                    <option value="Licenciatura en derecho">
-                                        Licenciatura en derecho
+                                    <option value="Nurse">
+                                        Nurse
                                     </option>
-                                    <option value="Administracion">Administracion</option>
-                                    <option value="Contaduria">Contaduria</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Lawyer">Lawyer</option>
                                 </select>
                         </div>
                         <div class="uk-width-1-2@s">
