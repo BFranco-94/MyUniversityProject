@@ -14,6 +14,6 @@ public interface Querys {
 	public boolean DeleteQueryHibernate(int idKey);
 	
 	public void ReadQueryHibernate(int idKey);
-	public boolean ReadQuery(int idKey, String keyName);
+	public boolean ReadQuery(String keyName, String  keyPassword, String typeLog) throws SQLException;
 	
 }

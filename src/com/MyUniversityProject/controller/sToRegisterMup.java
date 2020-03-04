@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.MyUniversityProject.factory_query.QuerysEntityFactory;
 import com.MyUniversityProject.factory_query.TypeEntity;
 import com.MyUniversityProject.interfaces.Querys;
+import com.MyUniversityProject.model.SessionUsers;
 
 /**
  * Servlet implementation class sToRegisterMup
@@ -47,57 +48,91 @@ public class sToRegisterMup extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//SessionUsers su = new SessionUsers();
+		response.setContentType("text/html; charset=UTF-8"); 
 		
 		//INDIVIDUAL DATA
 		String userName = request.getParameter("UserName");
 		String email = request.getParameter("Email");
 		String password = request.getParameter("Password");
 		String typeOfUser = request.getParameter("KindOfUser");
+		SessionUsers su = new SessionUsers();
 		boolean checkTerms = Boolean.parseBoolean(request.getParameter("CheckTerms"));
-		String acceptTerms=(checkTerms)? "1" : "0";
-		boolean flagResponse=false;
-		switch(typeOfUser) {
-			case "Student":
-				//DATA OF STUDENTS
-				String nameStudent = request.getParameter("Names");
-				String lastNameStudent = request.getParameter("LastName");
-				String universityName = request.getParameter("UniversityName");
-				String federalEntity = request.getParameter("FederalEntity");
-				String country = request.getParameter("Country");
-				String status = request.getParameter("Status");
-				String academicArea = request.getParameter("AcademicArea");
-				Object dataStudent[]= {
-						userName, email, password,typeOfUser, acceptTerms,
-						//DATA STUDENTS
-						nameStudent, lastNameStudent, universityName, federalEntity,
-						country, status, academicArea
-				};
-				Querys queryEntity = QuerysEntityFactory.buildEntityQuery(TypeEntity.USER);
-				try {
-					flagResponse = queryEntity.InsertQueryHibernate(dataStudent);
-					String message=(flagResponse)? "Success on register": "Error";
-					String jSonMessage=
-					"{ "
-						+"\"dataRegister\":{"
-							+ "\"Message\":\""+message+"\","
-							+ "\"NameUser\":\""+userName+"\","
-							+ "\"status\":"+flagResponse
-						+ "}"
-					+ "}";
-					response.getWriter().append(jSonMessage);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			break;
-			case "Company":
-				
-			break;
-			default:
-				
-			break;
+		boolean flagResponse=false; //flag to response on JSON format if the register was successfull
+		if(checkTerms) {
+			switch(typeOfUser) {
+				case "Student":
+					//DATA OF STUDENTS
+					String nameStudent = request.getParameter("Names");
+					String lastNameStudent = request.getParameter("LastName");
+					String universityName = request.getParameter("UniversityName");
+					String status = request.getParameter("Status");
+					String academicArea = request.getParameter("StudyArea");
+					Object dataStudent[]= {
+							userName, email, password,typeOfUser,
+							//DATA STUDENTS
+							nameStudent, lastNameStudent, universityName, academicArea, status 
+					};
+					Querys queryEntityStudent = QuerysEntityFactory.buildEntityQuery(TypeEntity.USER);
+					try {
+						flagResponse = queryEntityStudent.InsertQueryPrepare(dataStudent);
+						String message = (flagResponse)? "Successfull Registration": "Error on register, try again";
+						String jSonMessage=
+						"{ "
+							+"\"dataRegister\":{"
+								+ "\"Message\":\""+message+"\","
+								+ "\"NameUser\":\""+userName+"\","
+								+ "\"status\":"+flagResponse
+							+ "}"
+						+ "}";
+						response.getWriter().append(jSonMessage);
+					} catch (SQLException e) {
+						e.getMessage();
+					}
+				break;
+				case "Company":
+					//DATA OF COMPANY
+					String companyName = request.getParameter("companyName");
+					String contactName = request.getParameter("ContactName");
+					String businessField = request.getParameter("businessField");
+					String kindOfCompany = request.getParameter("kindOfCompany");
+					Object dataCompany[]= {
+							userName, email, password, typeOfUser,
+							//DATA OF COMPANY
+							companyName, contactName, businessField, kindOfCompany
+					};
+					Querys queryEntityCompany = QuerysEntityFactory.buildEntityQuery(TypeEntity.USER);
+					try {
+						flagResponse = queryEntityCompany.InsertQueryPrepare(dataCompany);
+						String message = (flagResponse)? "Successfull Registration": "Error on register, try again";
+						String jSonMessage=
+						"{ "
+							+"\"dataRegister\":{"
+								+ "\"Message\":\""+message+"\","
+								+ "\"NameUser\":\""+userName+"\","
+								+ "\"status\":"+flagResponse
+							+ "}"
+						+ "}";
+						response.getWriter().append(jSonMessage);
+					} catch (SQLException e) {
+						e.getMessage();
+					}
+				break;
+				default:
+					
+				break;
+			}
+		}else {
+			String message = "Plase acept terms and conditions";
+			String jSonMessage=
+				"{ "
+					+"\"dataRegister\":{"
+						+ "\"Message\":\""+message+"\","
+						+ "\"NameUser\":\""+userName+"\","
+						+ "\"status\":"+flagResponse
+					+ "}"
+				+ "}";
+			response.getWriter().append(jSonMessage);
 		}
-		
 		
 		/*String message=(checkTerms)? "Success on register": "Error";
 		response.setContentType("text/html; charset=UTF-8");  		

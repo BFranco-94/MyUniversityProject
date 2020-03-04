@@ -97,7 +97,7 @@ public class InsertQuery extends QueryManagment{
 	}
 
 	@Override
-	public boolean ReadQuery(int idKey, String keyName) {
+	public boolean ReadQuery(String keyName, String keyPassword, String typeLog) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}

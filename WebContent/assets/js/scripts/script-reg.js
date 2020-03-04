@@ -4,8 +4,7 @@ var itemSelectedForStatus="";
 var kOfUser="";
 var kOfCompany="";
 window.addEventListener('load', function(){
-	// UIkit.modal("#mdal-choose-user").show();
-
+	
 	// UIkit.modal("#mdal-dataComplete").show();
 	var URLhash = window.location.hash;
 	if (URLhash=="#sign-in") { $("#section-sigup").hide("slow"); }
@@ -279,10 +278,11 @@ function insertActionToRegisterStudent(
 	userNameAccount ,email,password,nameStudent,
 	lastNameStudent, universityName, federalEntity, 
 	country, itemSelectedForAcademicArea,  itemSelectedForStatus , checkTerms, typeOfUser ){
-	let arrData=[
-		userNameAccount, email, password, nameStudent, lastNameStudent, universityName, 
-		federalEntity, country, itemSelectedForAcademicArea,  itemSelectedForStatus, checkTerms, typeOfUser
-	];
+	
+	document.querySelector("#bodyProccess").style.border="4px dashed blue";
+	document.querySelector("#proccessData").style.display="block";
+	document.querySelector("#resultProccess").style.display="block";
+	UIkit.modal("#mdal-proccesing").show("slow");
 	$.post('sToRegisterMup', {
 		UserName : userNameAccount,
 		Email : email,
@@ -300,7 +300,14 @@ function insertActionToRegisterStudent(
 	}, function(response) {
 		console.log(response);
 		let data=JSON.parse(response);
+
 		if(data.dataRegister.status){
+			$("#proccessData").hide("slow");
+			document.querySelector("#titleResponseProccess").textContent=data.dataRegister.Message;
+			document.querySelector("#messageToUser").textContent="Redirecting to dashboard...";
+			setTimeout(function() {
+				window.location.href="Profile/dashboard-st.jsp";
+		    },4000);
 			document.querySelectorAll('.messageSignupSuccess')[0].textContent=""+data.dataRegister.Message;
 			document.querySelectorAll('.messageSignupSuccess')[0].style.display="block";
 			document.querySelectorAll('.messageSignupSuccess')[0].style.transform="scale(1.1)";
@@ -313,6 +320,11 @@ function insertActionToRegisterStudent(
 			);
 
 		}else{
+			document.querySelector("#titleResponseProccess").textContent=data.dataRegister.Message;
+			document.querySelector("#messageToUser").textContent="Try again, loading form";
+			setTimeout(function() {
+				UIkit.modal("#mdal-dataComplete").show();
+		    },5000);
 			document.querySelectorAll('.messageSignupSuccess')[0].textContent=""+data.dataRegister.Message;
 			document.querySelectorAll('.messageSignupSuccess')[0].style.display="block";
 			document.querySelectorAll('.messageSignupSuccess')[0].style.transform="scale(1.1)";
@@ -321,7 +333,6 @@ function insertActionToRegisterStudent(
 			console.log("fallo -> "+data.dataRegister.status);
 		}
 	}); 
-	//console.log(arrData);
 }
 
 function insertActionToRegisterCompany(

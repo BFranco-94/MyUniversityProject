@@ -139,6 +139,10 @@ figure figcaption {
 	font-size: 30px;
 }
 
+#proccessData, #resultProccess{
+	display: none;
+}
+
 @media ( max-width : 996px) {
 	.content-formulary {
 		margin-top: 10px;

@@ -19,7 +19,7 @@ public class DataBaseConnection implements ConnectionInterface {
 	public static PreparedStatement prest=null;
     public static CallableStatement cllst=null;
     private Connection conec=null;
-    public static Statement st=null;
+    public  Statement st=null;
     public static ResultSet rt=null;
 	
 	//declare my constructor in private

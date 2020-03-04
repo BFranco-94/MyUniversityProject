@@ -162,7 +162,7 @@
 
 
 <section class="uk-section" id="section-sigup" uk-parallax="bgy: -350" >
-	<div class="uk-position-large uk-margin-large uk-position-center
+    <div class="uk-position-large uk-margin-large uk-position-center
             ">
         <div class="uk-card uk-grid-collapse uk-child-width-1-2@s 
                     uk-margin content-formulary" uk-grid id="section-sigup-cont">
@@ -367,12 +367,12 @@
                                         Computer Engineering
                                     </option>
                                     <option value="Nurse">
-                                        Nurse
+                                        Doctor
                                     </option>
                                     <option value="Doctor">Doctor</option>
                                     <option value="Lawyer">Lawyer</option>
                                 </select>
-                        </div> 
+                        </div>
                         <div class="uk-width-1-2@s">
                             <label class="uk-form-label uk-text-left uk-margin" 
                                    for="status_student">Status of the student</label>
@@ -506,9 +506,23 @@
             </div>
         </div> 
         <!-- ======================== -->
-    </div>	
+    </div>  
 </section>
 
+
+<div id="mdal-proccesing" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body" id="bodyProccess">
+        <button class="uk-modal-close-outside" type="button" uk-close></button>
+        <div id="proccessData" class="uk-text-center">
+            <img src="assets/image/loading.gif" width="120px" alt="">   
+            <h2 class="uk-modal-title uk-text-center uk-text-primary uk-text-uppercase">Proccesing Register</h2>    
+        </div>
+        <div id="resultProccess">
+            <h2 class="uk-text-center uk-text-success uk-text-uppercase" id="titleResponseProccess"></h2>
+            <p class="uk-text-primary uk-text-center" id="messageToUser"></p>
+        </div>
+    </div>
+</div>
 
 <footer class="uk-background-secondary" uk-parallax="bgy: -150; bgx: 420;">
         <h2 class="uk-text-center uk-padding-small uk-light">
@@ -621,11 +635,11 @@
 
 
 <!-- 
-	Tema a resolver - Gente que no lee correos
+    Tema a resolver - Gente que no lee correos
 
-	 Crear una app que automatice la creacion de mensajes y los envie a 
-	 whatsapp donde vincule al correo ya se email(gmail, outlook, yahoo, etc)
-	 y estos redirigan el mesaje de email a whatsapp y el usuario vea con rapides de los que se trata
+     Crear una app que automatice la creacion de mensajes y los envie a 
+     whatsapp donde vincule al correo ya se email(gmail, outlook, yahoo, etc)
+     y estos redirigan el mesaje de email a whatsapp y el usuario vea con rapides de los que se trata
 
 
 
